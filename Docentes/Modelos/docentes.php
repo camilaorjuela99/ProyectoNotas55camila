@@ -8,15 +8,19 @@ class Docentes extends conexion
 		$this->db = parent::_construct();
 	}
 	//inserta un docente
-	public function agregarad($Nombread,$Apellidoad,$Documentoad,$Materiasad,$NotasMatead)
+	public function agregarad($Nombread,$Apellidoad,$Documentoad,$Materiasad,$NotasMatead,$Correoad,$Usuarioad,$Passwordad,$Perfilad);
 	{
-		$statement =$this->db->prepare("INSERT INTO docente(Nombredo,Apellidodo,Documentodo,Materiasdo,NotasMate)values(:Nombread,:Apellidoad,:Documentoad,:Materiasad,:NotasMatead)");
+		$statement =$this->db->prepare("INSERT INTO docente(Nombredo,Apellidodo,Documentodo,Materiasdo,NotasMate,Correodo,Usuariodo,Passworddo,Perfildo)values(:Nombread,:Apellidoad,:Documentoad,:Materiasad,:NotasMatead,:Correodo,:Usuariodo,:Passworddo,:Perfildo)");
 
-		$statement->bindParam(":Nombread",$Nombread);
-		$statement->bindParam(":Apellidoad",$Apellidoad);
-		$statement->bindParam(":Documentoad",$Documentoad);
-		$statement->bindParam(":Materiasad",$Materiasad);
-		$statement->bindParam(":NotasMatead",$NotasMatead);
+		$statement->bindParam(':Nombread',$Nombread);
+		$statement->bindParam(':Apellidoad',$Apellidoad);
+		$statement->bindParam(':Documentoad',$Documentoad);
+		$statement->bindParam(':Correoad',$Correoad);
+		$statement->bindParam('Usuarioad',$Usuarioad);
+		$statement->bindParam('Passwordad',$Passwordad);
+		$statement->bindParam('Perfilad',$Perfilad);
+		$statement->bindParam(':Materiasad',$Materiasad);
+		$statement->bindParam(':NotasMatead',$NotasMatead);
 		if ($statement->execute())
 		 {
 			echo "Docente registrado";
@@ -51,15 +55,18 @@ class Docentes extends conexion
 		return $row;
 	}
 
-	public function updatead($Nombread,$Apellidoad,$Documentoad,$Materiasad,$NotasMatead);
+	public function updatead($Nombread,$Apellidoad,$Documentoad,$Materiasad,$NotasMatead,$Correoad,$Usuarioad,$Passwordad,$Perfilad);
 	{
-		$statement=$this->db->prepare("UPDATE docente SET Nombredo=:Nombread, Apellidodo=:Apellidoad, Documentodo=:Documentoad, Materiasdo=:Materiasad,NotasMate=NotasMatead WHERE id_docente=$Id");
-		$statement->bindParam(':Id',$Id);
+		$statement=$this->db->prepare("UPDATE docente SET Nombredo=:Nombread, Apellidodo=:Apellidoad, Documentodo=:Documentoad, Correodo=:Correodo,Usuariodo=:Usuariodo,Passworddo=:Passworddo,Perfildo=:Perfildo,Materiasdo=:Materiasad,NotasMate=NotasMatead, WHERE id_docente=$Id");
 		$statement->bindParam(':Nombread',$Nombread);
 		$statement->bindParam(':Apellidoad',$Apellidoad);
-		$statement->bindParam(":Documentoad",$Documentoad);
-		$statement->bindParam(":Materiasad",$Materiasad);
-		$statement->bindParam(":NotasMatead",$NotasMatead);
+		$statement->bindParam(':Documentoad',$Documentoad);
+		$statement->bindParam(':Correoad',$Correoad);
+		$statement->bindParam('Usuarioad',$Usuarioad);
+		$statement->bindParam('Passwordad',$Passwordad);
+		$statement->bindParam('Perfilad',$Perfilad);
+		$statement->bindParam(':Materiasad',$Materiasad);
+		$statement->bindParam(':NotasMatead',$NotasMatead);
 		
 
 		if ($statement->execute)

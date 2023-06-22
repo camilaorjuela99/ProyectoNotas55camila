@@ -7,16 +7,16 @@ class Administrador extends conexion
 		$this->db = parent::_construct();
 	}
 	//inserta un usuario
-	public function agregarad($Nombread,$Apellidoad,$Usuarioad,$Password,$Perfilad,$Estadoad)
+	public function addadmi($Nombread,$Apellidoad,$Usuarioad,$Password,$Perfilad,$Estadoad)
 	{
-		$statement = $this->db->prepare("INSERT INTO usuarios(Nombreu,Apellidou,Usuario,Passwordu,Perfilu,Estadou)values(:Nombread,:Apellidoad,:Usuarioad,:Passwordad,:Perfilad,:Estadoad)");
+		$statement = $this->db->prepare("INSERT INTO usuarios(Nombreu,Apellidou,Usuario,Passwordusu,Perfil,Estadousu)values(:Nombread,:Apellidoad,:Usuarioad,:Passwordad,:Perfilad,:Estadoad)");
 
-		$statement->bindParam(":Nombread",$Nombread);
-		$statement->bindParam(":Apellidoad,$Apellidoad");
-		$statement->bindParam(":Usuarioad",$Usuarioad);
-		$statement->bindParam(":Passwordad",$Passwordad);
-		$statement->bindParam(":Perfilad",$Perfilad);
-		$statement->bindParam(":Estadoad",$Estadoad);
+		$statement->bindParam(':Nombread',$Nombread);
+		$statement->bindParam(':Apellidoad',$Apellidoad);
+		$statement->bindParam(':Usuarioad',$Usuarioad);
+		$statement->bindParam(':Passwordad',$Passwordad);
+		$statement->bindParam(':Perfilad',$Perfilad);
+		$statement->bindParam(':Estadoad',$Estadoad);
 		if ($statement->execute())
 		 {
 			echo "Usuario registrado";
